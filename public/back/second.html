@@ -22,7 +22,7 @@
         </div>
         <div class="user">
                 <img src="./images/tm.jpg" alt="">
-            <p>萌萌的小提莫</p>
+                <p>萌萌的小提莫</p>
         </div>
         <div class="nav">
             <ul>
@@ -37,9 +37,9 @@
                         <span class="glyphicon glyphicon-list"></span>
                      分类管理
                     </a>
-                    <div class="child" style="display: none">
-                        <a href="first.html">一级分类</a>
-                        <a href="second.html">二级分类</a>
+                    <div class="child" style="display:block">
+                        <a href="first.html" >一级分类</a>
+                        <a href="second.html" class="now">二级分类</a>
                     </div>
                 </li>
                 <li>
@@ -63,17 +63,17 @@
             <!-- 这个是面包屑系统 -->
                 <ol class="breadcrumb">
                     <li><a href="#">管理系统</a></li>
-                    <li class="active">首页</li>
+                    <li >分页管理</li>
+                    <li class="active">二级分类</li>
                 </ol>
-                
-        <!-- 然后这个是内容区用来写数据统计图 -->
-        <div class="lt_content">
-                <div class="pic_left pull-left"></div>
-                <div class="pic_right pull-right"></div>
-            </div>
                   
         </div>
 
+        <!-- 然后这个是内容区用来写数据统计图 -->
+        <div class="lt_content">
+            <div class="pic_left"></div>
+            <div class="pic_left"></div>
+        </div>
         
     </div>
 
@@ -109,8 +109,6 @@
 <script src="./lib/bootstrap-validator/js/bootstrapValidator.js"></script>
 <!-- 引入加载环的JS -->
 <script src="./lib/nprogress/nprogress.js"></script>
-<!-- 然后引入要加入柱形图的的文件 -->
- <script src="lib/echarts/echarts.min.js"></script>
 <!-- 最后在引入自己要写的JS -->
 <script src="./js/common.js"></script>
 <script src="./js/index.js"></script>
