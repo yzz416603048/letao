@@ -52,8 +52,8 @@ $(document).ajaxStop(function () {
   $('.btn_logout').off().on('click',function(){
     // 然后开始在这个里面写阿贾克斯的
     $.ajax({
-      type:'get',
-      url:"/employee/checkRootLogin",
+      type:'get', 
+       url:"/employee/employeeLogout",
       success:function(data){
         // 然后判断一下是不是退出成功m
         console.log('我退出了')

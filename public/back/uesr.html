@@ -65,16 +65,65 @@
                     <li><a href="#">管理系统</a></li>
                     <li class="active">用户管理</li>
                 </ol>
+                <!--然后在这个里面写的，先写一个盒子 -->
+                <div class="lt_content">
+                    <!-- 然后在这个里面写表格 -->
+                    <table table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <td width="10%">序号</td>
+                                <td width="30%">用户名</td>
+                                <td width="30%">手机号</td>
+                                <td width="20%">状态</td>
+                                <td width="10%">操作</td>
+                            </tr>
+                        </thead>
+                        <!-- 然后下面是要渲染的地方 -->
+                        <tbody>
+                          <!-- 这个里面是动态生成的 -->
+                        </tbody>
+                    </table>
+                    <!-- 然后在这个里面给一个分页的盒子 -->
+                    <div class="text-right">
+                        <ul id="paginator"></ul>
+                      </div>
+                
+                </div>
                   
         </div>
 
-        <!-- 然后这个是内容区用来写数据统计图 -->
-        <div class="lt_content">
-            <div class="pic_left"></div>
-            <div class="pic_left"></div>
-        </div>
-        
+     
     </div>
+
+
+    <!-- 然后在这个装备一个模板然后开始 -->
+    <script type="text/html" id='tpl'>
+        <!-- 然后在开始固定一个试试能不能出来  能出来的话就开始遍历一下-->
+        {{each rows  v i}}
+        <tr>
+            <td>{{(page-1)*size+ i+1}}</td>
+            <td>{{v.username}}</td>
+            <td>{{v.mobile}}</td>
+            <!-- 这个是判断状态然后开状态 -->
+            <td>{{v.isDelete==1?'正常':'禁用'}}</td>
+            <!-- 然后这个需要2个按钮用来看现实状态的 -->
+            <!--然后一定要给tD一个id自动以 -->
+            <td data-id="{{v.id}}">
+            {{if v.isDelete ===1}}
+           <button class="btn btn-danger  btn-sm">禁用</button>
+            {{/if}}
+            {{if v.isDelete ===0}}
+            <button class="btn btn-success  btn-sm">启用</button>
+            {{/if}}
+         </td>
+        </tr>
+        {{/each}}
+    
+    </script>
+
+
+
+
 
 
     <!-- 然后这个是模态框 -->
@@ -97,7 +146,32 @@
                 </div>
               </div>
             </div>
+        </div>
+    </div>
+
+
+    <!-- 在准备一个模态框。 -->
+    <div class="modal fade" tabindex="-1" id="usertModal">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+              <h4 class="modal-title">温馨提示</h4>
+            </div>
+            <div class="modal-body">
+              <p class="text-danger">
+                <span class="glyphicon glyphicon-info-sign"></span>
+                是否要执行此次操作？
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              <button type="button" class="btn btn-primary btn_user">确定</button>
+            </div>
           </div>
+        </div>
+    </div>
+</div>
     
 
 
@@ -108,8 +182,12 @@
 <script src="./lib/bootstrap-validator/js/bootstrapValidator.js"></script>
 <!-- 引入加载环的JS -->
 <script src="./lib/nprogress/nprogress.js"></script>
+<!-- 然后要把那个模板引擎的文件给引进来 -->
+<script src="./lib/artTemplate/template-web.js"></script>
+<!-- 然后要把分页的引进来 -->
+<script src="./lib/bootstrap-paginator/bootstrap-paginator.js"></script>
 <!-- 最后在引入自己要写的JS -->
 <script src="./js/common.js"></script>
-<script src="./js/index.js"></script>
+<script src="./js/uesr.js"></script>
 </body>
 </html>

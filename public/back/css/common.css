@@ -130,3 +130,9 @@ html,body{
 
 }
 
+
+/*然后在这个里面写USER的样式 */
+.lt_content  .table tr{
+    text-align: center;
+    
+}

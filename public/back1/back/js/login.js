@@ -83,7 +83,7 @@ $(function () {
         if(data.error === 1000){
           //alert("用户名不存在");
 
-          //手动调用方$e校验失败即可
+          //手动调用方法，updateStatus让username校验失败即可
           //第一个参数：改变哪个字段
           //第二个参数：改成什么状态  VALID:通过  INVALID:不通过
           //第三个参数：选择提示的信息
