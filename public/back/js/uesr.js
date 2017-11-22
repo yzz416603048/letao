@@ -2,7 +2,7 @@
 // 然后下面还是要做分页
 $(function(){
     var currentPage = 1;
-    var pageSize = 6;
+    var pageSize = 5;
 
    //封装一个函数
    function render(){
