@@ -142,9 +142,10 @@ a:link, a:visited, a:hover, a:active {
 }
 
 
-.fileupload_box {
+fileupload_box{
   width: 82px;
   height: 34px;
+
   position: relative;
 }
 

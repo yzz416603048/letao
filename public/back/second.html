@@ -79,12 +79,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>2</td>
-                                    <td>2</td>
-                                </tr>
+                               <!-- 在这个里面开始做渲染的 -->
                             </tbody>
                         </table>
                         <!-- 然后下面还是要做分页的盒子 -->
@@ -100,7 +95,22 @@
     </div>
     <!-- 然后在这里有模板引擎 -->
     <script type="text/html" id = 'tpl'>
+        {{each rows v i}}
+        <tr>
+            <td>{{(page-1)*size+i+1}}</td>
+            <td>{{v.categoryName}}</td>
+            <td>{{v.brandName}}</td>
+            <td><img src="{{v.brandLogo}}" width='50' height ='50' alt=""></td>
+            </tr>
+        {{/each}}
   
+    </script>
+
+
+    <script type="text/html" id ='tpl1'>
+        {{each rows v i}}
+        <li><a data-id="{{v.id}}" href="javascript:;">{{v.categoryName}}</a></li>
+        {{/each}}
     </script>
 
 
@@ -127,7 +137,8 @@
           </div>
     </div>
     <!-- 然后在开始准备一个模态框 -->
-    <div class="modal fade" tabindex="-1" id="addtModal">
+    <div class="modal fade" tabindex="-1" id="addModal">
+
             <div class="modal-dialog modal-sm">
               <div class="modal-content">
                 <div class="modal-header">
@@ -135,11 +146,34 @@
                   <h4 class="modal-title">添加分类</h4>
                 </div>
                 <div class="modal-body">
-                        <form id="form">
-                                <div class="form-group">
-                                  <input type="text" class="form-control" name="categoryName" placeholder="请输入一级分类的名称">
-                                </div>
-                              </form>
+                  <form id="form">
+                    <div class="form-group">
+                      <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                          <span class="dropdown-text">请选择一级分类</span>
+                          <span class="caret"></span>
+                        </button>
+                        <input type="hidden" name="categoryId">
+                        <ul class="dropdown-menu">
+                          <!--再挖个坑-->
+                          
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="brandName" placeholder="请输入二级分类的名称">
+                    </div>
+                    <div class="form-group">
+                      <div class="fileupload_box">
+                        <button class="btn btn-default">上传图片</button>
+                        <input type="file" class="btn btn-default" id="fileupload" name="pic1" data-url="/category/addSecondCategoryPic">
+                      </div>
+                    </div>
+                    <div class="form-group img_box">
+                      <img src="images/none.png" width="100" height="100" alt="">
+                      <!-- <input type="hidden" name="brandLogo"> -->
+                    </div>
+                  </form>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
@@ -149,7 +183,6 @@
             </div>
           </div>
     </div>
-    
 
 
 <script src="./lib/jquery/jquery.js"></script>
